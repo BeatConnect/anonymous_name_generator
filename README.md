@@ -2,6 +2,8 @@
 
 Create Heroku-like names randomly, or consistently (based on inputs).
 
+Based on the work by [pejrich](https://github.com/pejrich/AnonymousNameGenerator)
+
 ## Installation
 
 Add `anonymous_name_generator` to your list of dependencies in `mix.exs`:
@@ -72,3 +74,9 @@ MIT
 
 * Fix typo
 * Performance boost by switching from noun/adj. using lists and `Enum.at/2`, to using `elem/2` and tuples.
+
+#### v 0.2.0
+
+* Runs formatter
+* Update for elixir > 1.14.0
+* Remove some of the negative sentiment adjectives

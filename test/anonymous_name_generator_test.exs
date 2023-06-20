@@ -5,13 +5,13 @@ defmodule AnonymousNameGeneratorTest do
   alias AnonymousNameGenerator, as: ANG
 
   test "generate_random/0" do
-    randoms = for i <- 1..10, do: ANG.generate_random
+    randoms = for _i <- 1..10, do: ANG.generate_random
     assert Enum.uniq(randoms) |> length == 10
   end
 
   test "generate_random/1" do
     # Should add two extra numbers
-    default_plus_two = default_num_possibilities * 10 * 10
+    default_plus_two = default_num_possibilities() * 10 * 10
     result = ANG.generate_random(default_plus_two)
     |> String.split("-")
     |> List.last
@@ -29,15 +29,15 @@ defmodule AnonymousNameGeneratorTest do
   end
 
   test "generate_consistent/2" do
-    randoms = for i <- 1..10 do
+    randoms = for _i <- 1..10 do
       ANG.generate_consistent(12, 21)
     end
     assert Enum.uniq(randoms) |> length == 1
   end
 
   test "generate_consistent/3" do
-    randoms = for i <- 1..10 do
-      ANG.generate_consistent(12, 21, default_num_possibilities * 10)
+    randoms = for _i <- 1..10 do
+      ANG.generate_consistent(12, 21, default_num_possibilities() * 10)
     end
     assert Enum.uniq(randoms) |> length == 1
     result = randoms
